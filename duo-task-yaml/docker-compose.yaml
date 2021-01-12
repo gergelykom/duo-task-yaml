@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  application:
+    build: ./application
+    ports:
+    - target: 5000
+      published: 5000
+      
+  nginx:
+    image: nginx:latest
+    ports:
+    - target: 80
+      published: 80
+      
+    volumes:
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
